@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #0097A7;
   height: 100px;
   padding: 20px;
   color: white;
@@ -11,6 +11,7 @@
 
 .App-title {
   font-size: 1.5em;
+  font-family: 'Exo', sans-serif;
 }
 
 .App-intro {
@@ -19,4 +20,8 @@
 
 ul {
   list-style: none;
+}
+
+.Clickable {
+  cursor: pointer;
 }
