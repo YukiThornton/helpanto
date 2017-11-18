@@ -2,7 +2,7 @@ const API_ROOT = 'http://localhost:3000';
 export const SELECT_RECIPE_ON_LIST = 'SELECT_RECIPE_ON_LIST';
 export const REQUEST_GET_RECIPES = 'REQUEST_GET_RECIPES';
 export const REQUEST_GET_RECIPES_SUCCESS = 'REQUEST_GET_RECIPES_SUCCESS';
-// export const REQUEST_GET_RECIPES_FAILURE = 'REQUEST_GET_RECIPES_FAILURE';
+export const REQUEST_GET_RECIPES_FAILURE = 'REQUEST_GET_RECIPES_FAILURE';
 
 export const selectRecipeOnList = id => {
   return {

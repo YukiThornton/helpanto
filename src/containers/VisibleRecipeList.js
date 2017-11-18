@@ -4,8 +4,9 @@ import RecipeList from '../components/RecipeList';
 
 const mapStateToProps = state => {
   return {
-    recipes: state.entity.recipes,
-    selectedRecipeId: state.selected.recipeOnList.id,
+    isFetching: state.entity.recipes.isFetching,
+    recipes: state.entity.recipes.byId,
+    selectedRecipeId: state.status.recipeList.selectedRecipeId,
   };
 }
 

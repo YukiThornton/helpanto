@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import VisibleRecipeList from './containers/VisibleRecipeList';
+import RecipeDetailContainer from './containers/RecipeDetailContainer';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           </p>
         </header>
         <VisibleRecipeList />
+        <RecipeDetailContainer />
       </div>
     );
   }

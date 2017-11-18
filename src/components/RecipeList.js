@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import RecipeRow from './RecipeRow';
+import Spinner from 'react-spinkit';
+import '../styles/App.css';
 
 class RecipeList extends Component {
     static propTypes = {
+      isFetching: PropTypes.bool.isRequired,
       recipes: PropTypes.object.isRequired,
       selectedRecipeId: PropTypes.string.isRequired,
       onRecipeRowClick: PropTypes.func.isRequired,
@@ -15,6 +18,13 @@ class RecipeList extends Component {
     }
 
     render() {
+      if (this.props.isFetching) {
+        return (
+          <div className="Spinner">
+            <Spinner name="chasing-dots" color="gray" />
+          </div>
+        )
+      }
       return (
         <ul>
           {Object.keys(this.props.recipes).map(key => (

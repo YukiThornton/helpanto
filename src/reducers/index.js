@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import recipes from './recipes';
-import selectedRecipeOnList from './selectedRecipeOnList';
+import recipeListStatus from './recipeListStatus';
 
 export default combineReducers({
   entity: combineReducers({
     recipes: recipes,
   }),
-  selected: combineReducers({
-    recipeOnList: selectedRecipeOnList
+  status: combineReducers({
+    recipeList: recipeListStatus
   }),
 });
