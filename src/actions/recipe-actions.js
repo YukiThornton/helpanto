@@ -1,3 +1,5 @@
+import { enqueueError } from './error-actions.js';
+
 const API_ROOT = 'http://localhost:3000';
 export const SELECT_RECIPE_ON_LIST = 'SELECT_RECIPE_ON_LIST';
 export const REQUEST_GET_RECIPES = 'REQUEST_GET_RECIPES';
@@ -30,10 +32,16 @@ const convertRecipes = (apiRecipe) => {
   return recipes;
 }
 
-const receiveGetRecipes = (recipes) => {
+const succeedGetRecipes = (recipes) => {
   return {
     type: REQUEST_GET_RECIPES_SUCCESS,
     recipes: recipes,
+  };
+}
+
+const failGetRecipes = () => {
+  return {
+    type: REQUEST_GET_RECIPES_FAILURE,
   };
 }
 
@@ -51,9 +59,18 @@ const shouldFetchRecipes = getState => {
 const fetchRecipes = () => dispatch => {
   dispatch(requestGetRecipes());
   return fetch(`${API_ROOT}/recipes`)
-    .then(response => response.json())
+    .then(res => {
+      if (res.status !== 200) {
+        throw new Error('Failed to get recipe lists. See you later.');
+      }
+      return res.json();
+    })
     .then(json => {
-      return dispatch(receiveGetRecipes(convertRecipes(json.recipes)));
+      return dispatch(succeedGetRecipes(convertRecipes(json.recipes)));
+    })
+    .catch(error => {
+      dispatch(failGetRecipes());
+      return dispatch(enqueueError(error.message));
     })
 }
 

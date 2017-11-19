@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/App.css';
+import ErrorModalContainer from './containers/ErrorModalContainer';
 import RecipeListContainer from './containers/RecipeListContainer';
 import RecipeDetailContainer from './containers/RecipeDetailContainer';
 
@@ -13,6 +14,7 @@ class App extends Component {
             Recipe keeper & cooking assistant
           </p>
         </header>
+        <ErrorModalContainer />
         <RecipeListContainer />
         <RecipeDetailContainer />
       </div>
