@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import VisibleRecipeList from './containers/VisibleRecipeList';
+import RecipeListContainer from './containers/RecipeListContainer';
 import RecipeDetailContainer from './containers/RecipeDetailContainer';
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
             Recipe keeper & cooking assistant
           </p>
         </header>
-        <VisibleRecipeList />
+        <RecipeListContainer />
         <RecipeDetailContainer />
       </div>
     );

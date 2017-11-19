@@ -1,8 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import '../styles/App.css';
 
-const RecipeRow = ({onClick, title, selected}) => (
+const RecipeRow = ({title, selected, onClick}) => (
   <li
     onClick={onClick}
     className="Clickable"
@@ -13,5 +13,11 @@ const RecipeRow = ({onClick, title, selected}) => (
     {title}
   </li>
 );
-// TODO: Add RecipeRow.propTypes
+
+RecipeRow.propTypes = {
+  title: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
 export default RecipeRow;

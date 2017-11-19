@@ -1,7 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const RecipeDetail = ({visible, title, content, created_at, last_modified_at}) => {
+const RecipeDetail = ({visible, title, content, createdAt, lastModifiedAt}) => {
   if (visible) {
     return (
       <div>
@@ -12,5 +12,13 @@ const RecipeDetail = ({visible, title, content, created_at, last_modified_at}) =
     return <div></div>;
   }
 };
-// TODO: Add RecipeRow.propTypes
+
+RecipeDetail.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  createdAt: PropTypes.string,
+  lastModifiedAt: PropTypes.string,
+};
+
 export default RecipeDetail;

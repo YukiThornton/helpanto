@@ -1,4 +1,4 @@
-import { SELECT_RECIPE_ON_LIST } from '../actions/recipe';
+import { SELECT_RECIPE_ON_LIST } from '../actions/recipe-actions';
 
 const initialState = {
   selected: false,

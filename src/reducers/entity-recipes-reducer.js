@@ -2,7 +2,7 @@ import {
   REQUEST_GET_RECIPES,
   REQUEST_GET_RECIPES_SUCCESS,
   REQUEST_GET_RECIPES_FAILURE,
-} from '../actions/recipe';
+} from '../actions/recipe-actions';
 
 const initialState = {
   isFetching: false,

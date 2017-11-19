@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectRecipeOnList, updateRecipesIfNeeded } from '../actions/recipe';
+import { selectRecipeOnList, fetchRecipesIfNeeded } from '../actions/recipe-actions';
 import RecipeList from '../components/RecipeList';
 
 const mapStateToProps = state => {
@@ -15,15 +15,15 @@ const mapDispatchToProps = dispatch => {
     onRecipeRowClick: id => {
       dispatch(selectRecipeOnList(id));
     },
-    updateRecipesIfNeeded: () => {
-      dispatch(updateRecipesIfNeeded());
+    fetchRecipesIfNeeded: () => {
+      dispatch(fetchRecipesIfNeeded());
     }
   };
 }
 
-const VisibleRecipeList = connect(
+const RecipeListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(RecipeList);
 
-export default VisibleRecipeList;
+export default RecipeListContainer;

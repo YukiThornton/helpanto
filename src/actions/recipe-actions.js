@@ -23,8 +23,8 @@ const convertRecipes = (apiRecipe) => {
     recipes[recipe._id] = {
       title: recipe.title,
       content: recipe.content,
-      created_at: recipe.created_at,
-      last_modified_at: recipe.last_modified_at,
+      createdAt: recipe.created_at,
+      lastModifiedAt: recipe.last_modified_at,
     }
   );
   return recipes;
@@ -37,7 +37,7 @@ const receiveGetRecipes = (recipes) => {
   };
 }
 
-const updateRecipes = () => dispatch => {
+const fetchRecipes = () => dispatch => {
   dispatch(requestGetRecipes());
   return fetch(`${API_ROOT}/recipes`)
     .then(response => response.json())
@@ -46,8 +46,8 @@ const updateRecipes = () => dispatch => {
     })
 }
 
-export const updateRecipesIfNeeded = () => dispatch => {
+export const fetchRecipesIfNeeded = () => dispatch => {
   if (true) {
-    return dispatch(updateRecipes());
+    return dispatch(fetchRecipes());
   }
 };

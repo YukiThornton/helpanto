@@ -10,11 +10,11 @@ class RecipeList extends Component {
       recipes: PropTypes.object.isRequired,
       selectedRecipeId: PropTypes.string.isRequired,
       onRecipeRowClick: PropTypes.func.isRequired,
-      updateRecipesIfNeeded: PropTypes.func.isRequired,
+      fetchRecipesIfNeeded: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
-      this.props.updateRecipesIfNeeded();
+      this.props.fetchRecipesIfNeeded();
     }
 
     render() {
