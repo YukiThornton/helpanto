@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { selectRecipeOnList, fetchRecipesIfNeeded } from '../actions/recipe-actions';
 import RecipeList from '../components/RecipeList';
 
+import { openModalNewRecipe } from '../actions/modal-actions';
+
 const mapStateToProps = state => {
   return {
     isFetching: state.entity.recipes.isFetching,
@@ -17,7 +19,10 @@ const mapDispatchToProps = dispatch => {
     },
     fetchRecipesIfNeeded: () => {
       dispatch(fetchRecipesIfNeeded());
-    }
+    },
+    openModalNewRecipe: () => {
+      dispatch(openModalNewRecipe());
+    },
   };
 }
 
