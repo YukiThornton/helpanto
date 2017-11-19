@@ -37,6 +37,17 @@ const receiveGetRecipes = (recipes) => {
   };
 }
 
+const shouldFetchRecipes = getState => {
+  const recipes = getState().entity.recipes;
+  if (Object.keys(recipes.byId).length > 0) {
+    return false;
+  }
+  if (recipes.isFetching) {
+    return false;
+  }
+  return true;
+}
+
 const fetchRecipes = () => dispatch => {
   dispatch(requestGetRecipes());
   return fetch(`${API_ROOT}/recipes`)
@@ -46,8 +57,8 @@ const fetchRecipes = () => dispatch => {
     })
 }
 
-export const fetchRecipesIfNeeded = () => dispatch => {
-  if (true) {
+export const fetchRecipesIfNeeded = () => (dispatch, getState) => {
+  if (shouldFetchRecipes(getState)) {
     return dispatch(fetchRecipes());
   }
 };
