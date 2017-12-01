@@ -4,7 +4,6 @@ import { createRecipe } from '../actions/recipe-actions';
 import { closeModal, MODAL_TYPE_NEW_RECIPE } from '../actions/modal-actions';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -50,39 +49,31 @@ class NewRecipeModal extends Component {
         onRequestClose={this.handleRequestClose}
       >
         <h1>Create new recipe</h1>
-        <MuiThemeProvider>
-          <TextField
-            hintText="Recipe title"
-            value={this.state.title}
-            onChange={(e, val) => this.handleTextInput({title: val})}
-          />
-        </MuiThemeProvider>
+        <TextField
+          hintText="Recipe title"
+          value={this.state.title}
+          onChange={(e, val) => this.handleTextInput({title: val})}
+        />
         <br />
         <br />
-        <MuiThemeProvider>
-          <TextField
-            multiLine={true}
-            rows={4}
-            rowsMax={6}
-            hintText="Recipe content"
-            value={this.state.content}
-            onChange={(e, val) => this.handleTextInput({content: val})}
-          />
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <FlatButton
-            onClick={this.handleSubmit}
-            label="Create"
-            fullWidth={true}
-          />
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <FlatButton
-            onClick={this.handleRequestClose}
-            label="Cancel"
-            fullWidth={true}
-          />
-        </MuiThemeProvider>
+        <TextField
+          multiLine={true}
+          rows={4}
+          rowsMax={6}
+          hintText="Recipe content"
+          value={this.state.content}
+          onChange={(e, val) => this.handleTextInput({content: val})}
+        />
+        <FlatButton
+          onClick={this.handleSubmit}
+          label="Create"
+          fullWidth={true}
+        />
+        <FlatButton
+          onClick={this.handleRequestClose}
+          label="Cancel"
+          fullWidth={true}
+        />
       </Modal>
     );
   }

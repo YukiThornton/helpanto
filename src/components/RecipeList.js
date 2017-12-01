@@ -5,7 +5,6 @@ import Spinner from 'react-spinkit';
 import '../styles/App.css';
 
 // TODO: Move the button away
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
@@ -33,13 +32,11 @@ class RecipeList extends Component {
       }
       return (
         <div>
-          <MuiThemeProvider>
-            <FloatingActionButton
-              onClick={this.props.openModalNewRecipe}
-            >
-              <ContentAdd />
-            </FloatingActionButton>
-          </MuiThemeProvider>
+          <FloatingActionButton
+            onClick={this.props.openModalNewRecipe}
+          >
+            <ContentAdd />
+          </FloatingActionButton>
           <ul>
             {Object.keys(this.props.recipes).map(key => (
               <RecipeRow
