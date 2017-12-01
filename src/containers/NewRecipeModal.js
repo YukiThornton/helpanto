@@ -22,30 +22,39 @@ class NewRecipeModal extends Component {
     };
   }
 
-  handleButtonClick = () => {
-    this.props.onRequestCreateRecipe(this.state.title, this.state.content);
-  };
-
-  onClose = () => {
+  clearInput = () => {
     this.setState({
       title: '',
       content: '',
     });
+  };
+
+  handleSubmit = () => {
+    this.props.onRequestCreateRecipe(this.state.title, this.state.content);
+    this.clearInput();
+  };
+
+  handleRequestClose = () => {
+    this.clearInput();
     this.props.onRequestClose();
+  };
+
+  handleTextInput = (input) => {
+    this.setState(input);
   };
 
   render() {
     return (
       <Modal
         isOpen={this.props.isOpen}
-        onRequestClose={this.onClose}
+        onRequestClose={this.handleRequestClose}
       >
         <h1>Create new recipe</h1>
         <MuiThemeProvider>
           <TextField
             hintText="Recipe title"
             value={this.state.title}
-            onChange={(e, val) => this.setState({title: val})}
+            onChange={(e, val) => this.handleTextInput({title: val})}
           />
         </MuiThemeProvider>
         <br />
@@ -57,19 +66,19 @@ class NewRecipeModal extends Component {
             rowsMax={6}
             hintText="Recipe content"
             value={this.state.content}
-            onChange={(e, val) => this.setState({content: val})}
+            onChange={(e, val) => this.handleTextInput({content: val})}
           />
         </MuiThemeProvider>
         <MuiThemeProvider>
           <FlatButton
-            onClick={this.handleButtonClick}
+            onClick={this.handleSubmit}
             label="Create"
             fullWidth={true}
           />
         </MuiThemeProvider>
         <MuiThemeProvider>
           <FlatButton
-            onClick={this.onClose}
+            onClick={this.handleRequestClose}
             label="Cancel"
             fullWidth={true}
           />
