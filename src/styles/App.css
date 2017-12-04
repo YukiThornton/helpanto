@@ -1,25 +1,46 @@
 .App {
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.App-visible {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 300px minmax(300px, 1fr);
+  grid-template-rows: 100px 1fr 50px;
 }
 
 .App-header {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
   background-color: #0097A7;
-  height: 100px;
-  padding: 20px;
   color: white;
+  text-align: center;
 }
 
-.App-title {
+.Recipe-list {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.Recipe-Details {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  padding: 10px;
+}
+
+.Logo-font {
   font-size: 1.5em;
   font-family: 'Exo', sans-serif;
 }
 
-.App-intro {
+.Subtitle {
   font-size: large;
-}
-
-ul {
-  list-style: none;
 }
 
 .Clickable {

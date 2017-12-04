@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 const RecipeDetail = ({visible, title, content, createdAt, lastModifiedAt}) => {
   if (visible) {
     return (
-      <div>
-        {content}
+      <div className='Recipe-Details'>
+        <h2>{title}</h2>
+        <p style={{color: 'gray'}}>{content}</p>
       </div>
     );
   } else {
-    return <div></div>;
+    return <div className='Recipe-Details'></div>;
   }
 };
 

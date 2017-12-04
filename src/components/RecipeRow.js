@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/App.css';
+import { ListItem } from 'material-ui/List';
+
+const itemStyle = {
+  color: '#78909C',
+  fontSize: 30,
+};
+const selectedItemStyle = {
+  color: '#455A64',
+  fontSize: 30,
+  backgroundColor: '#CFD8DC',
+};
 
 const RecipeRow = ({title, selected, onClick}) => (
-  <li
+  <ListItem
+    primaryText={title}
     onClick={onClick}
-    className="Clickable"
-    style={{
-      color: selected ? '#0097A7' : 'gray'
-    }}
-  >
-    {title}
-  </li>
+    style={selected ? selectedItemStyle: itemStyle}
+  />
 );
 
 RecipeRow.propTypes = {

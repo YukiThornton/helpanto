@@ -8,17 +8,24 @@ import RecipeDetailContainer from './containers/RecipeDetailContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">HELPANTO</h1>
-          <p className="App-intro">
-            Recipe keeper & cooking assistant
-          </p>
-        </header>
+      <div className='App'>
         <ErrorModalContainer />
         <NewRecipeModal />
-        <RecipeListContainer />
-        <RecipeDetailContainer />
+        <div className='App-visible'>
+          <header className='App-header'>
+            <h1 className='Logo-font'>HELPANTO</h1>
+            <p className='Subtitle'>
+              Recipe keeper & cooking assistant
+            </p>
+          </header>
+          <RecipeListContainer />
+          <RecipeDetailContainer />
+          <footer className="App-header" style={{gridColumn: '1 / 3', gridRow: '3 / 4'}}>
+            <p className='Logo-font Subtitle'>
+              HELPANTO
+            </p>
+          </footer>
+        </div>
       </div>
     );
   }
