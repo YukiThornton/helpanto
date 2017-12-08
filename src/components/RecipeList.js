@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'material-ui/List';
+import TextField from 'material-ui/TextField';
 import RecipeRow from './RecipeRow';
 import Spinner from 'react-spinkit';
 import '../styles/App.css';
@@ -17,11 +18,16 @@ class RecipeList extends Component {
       onRecipeRowClick: PropTypes.func.isRequired,
       fetchRecipesIfNeeded: PropTypes.func.isRequired,
       openModalNewRecipe: PropTypes.func.isRequired,
+      onSearchInputChange: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
       this.props.fetchRecipesIfNeeded();
     }
+
+    onSearchInputChange = (searchText) => {
+      this.props.onSearchInputChange(searchText);
+    };
 
     render() {
       if (this.props.isFetching) {
@@ -33,6 +39,13 @@ class RecipeList extends Component {
       }
       return (
         <div className='Recipe-list'>
+          <TextField
+            hintText='Search'
+            style={{
+              paddingLeft: 10,
+            }}
+            onChange={(e, val) => this.onSearchInputChange(val)}
+          />
           <List>
             {Object.keys(this.props.recipes).map(key => (
               <RecipeRow
