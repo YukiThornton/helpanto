@@ -5,6 +5,9 @@ import {
   REQUEST_POST_RECIPE,
   REQUEST_POST_RECIPE_SUCCESS,
   REQUEST_POST_RECIPE_FAILURE,
+  REQUEST_DELETE_RECIPE,
+  REQUEST_DELETE_RECIPE_SUCCESS,
+  REQUEST_DELETE_RECIPE_FAILURE,
 } from '../actions/recipe-actions';
 
 const initialState = {
@@ -16,6 +19,7 @@ const recipes = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_GET_RECIPES:
     case REQUEST_POST_RECIPE:
+    case REQUEST_DELETE_RECIPE:
       return Object.assign({}, state,
         {
           isFetching: true,
@@ -26,12 +30,6 @@ const recipes = (state = initialState, action) => {
         isFetching: false,
         byId: action.recipes,
       };
-    case REQUEST_GET_RECIPES_FAILURE:
-      return Object.assign({}, state,
-        {
-          isFetching: false,
-        }
-      );
     case REQUEST_POST_RECIPE_SUCCESS:
       return Object.assign({}, state,
         {
@@ -43,7 +41,17 @@ const recipes = (state = initialState, action) => {
           ),
         }
       );
+    case REQUEST_DELETE_RECIPE_SUCCESS:
+      const {[action.id]: deletedId, ...newRecipes} = state.byId;
+      return Object.assign({}, state,
+        {
+          isFetching: false,
+          byId: newRecipes,
+        }
+      );
+    case REQUEST_GET_RECIPES_FAILURE:
     case REQUEST_POST_RECIPE_FAILURE:
+    case REQUEST_DELETE_RECIPE_FAILURE:
       return Object.assign({}, state,
         {
           isFetching: false,

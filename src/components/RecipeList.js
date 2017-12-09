@@ -19,6 +19,7 @@ class RecipeList extends Component {
       fetchRecipesIfNeeded: PropTypes.func.isRequired,
       openModalNewRecipe: PropTypes.func.isRequired,
       onSearchInputChange: PropTypes.func.isRequired,
+      onClickRecipeDeleteBtn: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
@@ -50,9 +51,11 @@ class RecipeList extends Component {
             {Object.keys(this.props.recipes).map(key => (
               <RecipeRow
                 key={key}
+                id={key}
                 title={this.props.recipes[key].title}
                 selected={this.props.selectedRecipeId === key}
                 onClick={() => this.props.onRecipeRowClick(key)}
+                onClickDeleteBtn={(id) => this.props.onClickRecipeDeleteBtn(id)}
               />
             ))}
           </List>

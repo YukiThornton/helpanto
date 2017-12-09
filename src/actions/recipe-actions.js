@@ -2,6 +2,7 @@ import { enqueueError } from './error-actions.js';
 
 const API_ROOT = 'http://localhost:3000';
 export const SELECT_RECIPE_ON_LIST = 'SELECT_RECIPE_ON_LIST';
+export const DESELECT_RECIPE_ON_LIST = 'DESELECT_RECIPE_ON_LIST';
 export const FILTER_RECIPE_LIST = 'FILTER_RECIPE_LIST';
 export const REQUEST_GET_RECIPES = 'REQUEST_GET_RECIPES';
 export const REQUEST_GET_RECIPES_SUCCESS = 'REQUEST_GET_RECIPES_SUCCESS';
@@ -9,12 +10,28 @@ export const REQUEST_GET_RECIPES_FAILURE = 'REQUEST_GET_RECIPES_FAILURE';
 export const REQUEST_POST_RECIPE = 'REQUEST_POST_RECIPE';
 export const REQUEST_POST_RECIPE_SUCCESS = 'REQUEST_POST_RECIPE_SUCCESS';
 export const REQUEST_POST_RECIPE_FAILURE = 'REQUEST_POST_RECIPE_FAILURE';
+export const REQUEST_DELETE_RECIPE = 'REQUEST_DELETE_RECIPE';
+export const REQUEST_DELETE_RECIPE_SUCCESS = 'REQUEST_DELETE_RECIPE_SUCCESS';
+export const REQUEST_DELETE_RECIPE_FAILURE = 'REQUEST_DELETE_RECIPE_FAILURE';
 
-export const selectRecipeOnList = id => {
-  return {
+const isSelectedRecipe = (id, getState) => {
+  return getState().status.recipeList.selected && id === getState().status.recipeList.selectedRecipeId;
+}
+
+export const selectRecipeOnList = id => dispatch => {
+  return dispatch({
     type: SELECT_RECIPE_ON_LIST,
     id
-  };
+  });
+};
+
+export const deselectRecipeOnListIfRemoved = id => (dispatch, getState) => {
+  if (isSelectedRecipe(id, getState)) {
+    return dispatch({
+      type: DESELECT_RECIPE_ON_LIST,
+      id
+    });
+  }
 };
 
 export const filterRecipeList = filterText => {
@@ -144,3 +161,48 @@ export const createRecipe = (title, content) => (dispatch, getState) => {
       return dispatch(enqueueError(error.message));
     })
 };
+
+const requestDeleteRecipe = () => {
+  return {
+    type: REQUEST_DELETE_RECIPE,
+  };
+}
+
+const succeedDeleteRecipe = (id) => {
+  return {
+    type: REQUEST_DELETE_RECIPE_SUCCESS,
+    id,
+  };
+}
+
+const failDeleteRecipe = () => {
+  return {
+    type: REQUEST_DELETE_RECIPE_FAILURE,
+  };
+}
+
+export const deleteRecipe = (id) => dispatch => {
+  dispatch(requestDeleteRecipe());
+  return fetch(`${API_ROOT}/recipe/${id}`, {
+    method: 'delete',
+  })
+    .then(res => {
+      if (res.status !== 200) {
+        throw new Error('Failed to delete a recipe. See you later.');
+      }
+      return res.json();
+    })
+    .then(json => {
+      return dispatch(succeedDeleteRecipe(id));
+    })
+    .then(() => {
+      return dispatch(deselectRecipeOnListIfRemoved(id));
+    })
+    .then(() => {
+      return dispatch(fetchRecipes());
+    })
+    .catch(error => {
+      dispatch(failDeleteRecipe());
+      return dispatch(enqueueError(error.message));
+    })
+}

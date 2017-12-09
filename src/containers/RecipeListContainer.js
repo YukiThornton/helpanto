@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectRecipeOnList, filterRecipeList, fetchRecipesIfNeeded } from '../actions/recipe-actions';
+import { selectRecipeOnList, filterRecipeList, fetchRecipesIfNeeded, deleteRecipe } from '../actions/recipe-actions';
 import RecipeList from '../components/RecipeList';
 
 import { openModalNewRecipe } from '../actions/modal-actions';
@@ -38,6 +38,9 @@ const mapDispatchToProps = dispatch => {
     },
     openModalNewRecipe: () => {
       dispatch(openModalNewRecipe());
+    },
+    onClickRecipeDeleteBtn: id => {
+      dispatch(deleteRecipe(id));
     },
   };
 }
