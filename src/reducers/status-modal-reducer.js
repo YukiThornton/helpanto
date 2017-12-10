@@ -1,29 +1,26 @@
-import {
-  OPEN_MODAL,
-  CLOSE_MODAL,
-  MODAL_TYPE_NONE,
-} from '../actions/modal-actions';
+import * as actionTypes from '../constants/action-types';
+import * as modalTypes from '../constants/modal-types';
 
 const initialState = {
   isOpen: false,
-  modalType: MODAL_TYPE_NONE,
+  modalType: modalTypes.MODAL_TYPE_NONE,
 };
 
 const modal = (state = initialState, action) => {
   switch (action.type) {
-    case OPEN_MODAL:
+    case actionTypes.OPEN_MODAL:
       return {
         isOpen: true,
         modalType: action.modalType,
       };
-    case CLOSE_MODAL:
+    case actionTypes.CLOSE_MODAL:
       return {
         isOpen: false,
-        modalType: MODAL_TYPE_NONE,
+        modalType: modalTypes.MODAL_TYPE_NONE,
       };
     default:
       return state;
   }
-}
+};
 
 export default modal;

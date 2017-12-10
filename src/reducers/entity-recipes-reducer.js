@@ -1,14 +1,4 @@
-import {
-  REQUEST_GET_RECIPES,
-  REQUEST_GET_RECIPES_SUCCESS,
-  REQUEST_GET_RECIPES_FAILURE,
-  REQUEST_POST_RECIPE,
-  REQUEST_POST_RECIPE_SUCCESS,
-  REQUEST_POST_RECIPE_FAILURE,
-  REQUEST_DELETE_RECIPE,
-  REQUEST_DELETE_RECIPE_SUCCESS,
-  REQUEST_DELETE_RECIPE_FAILURE,
-} from '../actions/recipe-actions';
+import * as actionTypes from '../constants/action-types';
 
 const initialState = {
   isFetching: false,
@@ -17,20 +7,20 @@ const initialState = {
 
 const recipes = (state = initialState, action) => {
   switch (action.type) {
-    case REQUEST_GET_RECIPES:
-    case REQUEST_POST_RECIPE:
-    case REQUEST_DELETE_RECIPE:
+    case actionTypes.REQUEST_GET_RECIPES:
+    case actionTypes.REQUEST_POST_RECIPE:
+    case actionTypes.REQUEST_DELETE_RECIPE:
       return Object.assign({}, state,
         {
           isFetching: true,
         }
       );
-    case REQUEST_GET_RECIPES_SUCCESS:
+    case actionTypes.REQUEST_GET_RECIPES_SUCCESS:
       return {
         isFetching: false,
         byId: action.recipes,
       };
-    case REQUEST_POST_RECIPE_SUCCESS:
+    case actionTypes.REQUEST_POST_RECIPE_SUCCESS:
       return Object.assign({}, state,
         {
           isFetching: false,
@@ -41,7 +31,7 @@ const recipes = (state = initialState, action) => {
           ),
         }
       );
-    case REQUEST_DELETE_RECIPE_SUCCESS:
+    case actionTypes.REQUEST_DELETE_RECIPE_SUCCESS:
       const {[action.id]: deletedId, ...newRecipes} = state.byId;
       return Object.assign({}, state,
         {
@@ -49,9 +39,9 @@ const recipes = (state = initialState, action) => {
           byId: newRecipes,
         }
       );
-    case REQUEST_GET_RECIPES_FAILURE:
-    case REQUEST_POST_RECIPE_FAILURE:
-    case REQUEST_DELETE_RECIPE_FAILURE:
+    case actionTypes.REQUEST_GET_RECIPES_FAILURE:
+    case actionTypes.REQUEST_POST_RECIPE_FAILURE:
+    case actionTypes.REQUEST_DELETE_RECIPE_FAILURE:
       return Object.assign({}, state,
         {
           isFetching: false,

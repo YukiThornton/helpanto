@@ -1,4 +1,4 @@
-import { ENQUEUE_ERROR, DEQUEUE_ERROR } from '../actions/error-actions';
+import * as actionTypes from '../constants/action-types';
 
 const initialState = {
   exists: false,
@@ -7,12 +7,12 @@ const initialState = {
 
 const error = (state = initialState, action) => {
   switch (action.type) {
-    case ENQUEUE_ERROR:
+    case actionTypes.ENQUEUE_ERROR:
       return {
         exists: true,
         messages: state.messages.concat(action.message),
       };
-    case DEQUEUE_ERROR:
+    case actionTypes.DEQUEUE_ERROR:
       const newMessages = state.messages.slice(1);
       return {
         exists: newMessages.length > 0,

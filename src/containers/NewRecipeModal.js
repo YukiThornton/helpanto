@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createRecipe } from '../actions/recipe-actions';
-import { closeModal, MODAL_TYPE_NEW_RECIPE } from '../actions/modal-actions';
+import { closeModal } from '../actions/modal-actions';
+import { MODAL_TYPE_NEW_RECIPE } from '../constans/modal-types';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';

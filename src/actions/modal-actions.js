@@ -1,17 +1,15 @@
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const MODAL_TYPE_NEW_RECIPE = 'MODAL_TYPE_NEW_RECIPE';
-export const MODAL_TYPE_NONE = 'MODAL_TYPE_NONE';
+import * as actionTypes from '../constants/action-types';
+import * as modalTypes from '../constants/modal-types';
 
 export const openModalNewRecipe = () => {
   return {
-    type: OPEN_MODAL,
-    modalType: MODAL_TYPE_NEW_RECIPE,
+    type: actionTypes.OPEN_MODAL,
+    modalType: modalTypes.MODAL_TYPE_NEW_RECIPE,
   };
 };
 
 export const closeModal = () => {
   return {
-    type: CLOSE_MODAL,
+    type: actionTypes.CLOSE_MODAL,
   };
 };
