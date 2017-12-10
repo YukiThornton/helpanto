@@ -12,15 +12,16 @@ const error = (state = initialState, action) => {
         exists: true,
         messages: state.messages.concat(action.message),
       };
-    case actionTypes.DEQUEUE_ERROR:
+    case actionTypes.DEQUEUE_ERROR: {
       const newMessages = state.messages.slice(1);
       return {
         exists: newMessages.length > 0,
         messages: newMessages,
       };
+    }
     default:
       return state;
   }
-}
+};
 
 export default error;

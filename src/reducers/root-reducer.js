@@ -6,11 +6,11 @@ import error from './error-reducer';
 
 export default combineReducers({
   entity: combineReducers({
-    recipes: recipes,
+    recipes,
   }),
   status: combineReducers({
-    recipeList: recipeList,
-    modal: modal,
+    recipeList,
+    modal,
   }),
-  error: error,
+  error,
 });
