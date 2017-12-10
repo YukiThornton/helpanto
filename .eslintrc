@@ -4,6 +4,13 @@
     "linebreak-style": [
       "error",
       "windows"
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed",
+      {
+        "requireReturnForObjectLiteral": true
+      }
     ]
   }
 }
