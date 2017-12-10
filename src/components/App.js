@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './styles/App.css';
-import ErrorModalContainer from './containers/ErrorModalContainer';
-import NewRecipeModal from './containers/NewRecipeModal';
-import RecipeListContainer from './containers/RecipeListContainer';
-import RecipeDetailContainer from './containers/RecipeDetailContainer';
+import '../styles/App.css';
+import ErrorModalContainer from '../containers/ErrorModalContainer';
+import NewRecipeModal from '../containers/NewRecipeModal';
+import RecipeListContainer from '../containers/RecipeListContainer';
+import RecipeDetailContainer from '../containers/RecipeDetailContainer';
 
 class App extends Component {
   render() {

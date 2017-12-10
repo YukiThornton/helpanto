@@ -7,15 +7,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from './reducers/root-reducer';
 import thunk from 'redux-thunk';
 import './styles/index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App';
 
 let store = createStore(
   reducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
-
-// store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,4 +22,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWorker();
