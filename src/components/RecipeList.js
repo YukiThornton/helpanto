@@ -16,14 +16,14 @@ class RecipeList extends Component {
       recipes: PropTypes.object.isRequired,
       selectedRecipeId: PropTypes.string.isRequired,
       onRecipeRowClick: PropTypes.func.isRequired,
-      fetchRecipesIfNeeded: PropTypes.func.isRequired,
+      fetchRecipes: PropTypes.func.isRequired,
       openModalNewRecipe: PropTypes.func.isRequired,
       onSearchInputChange: PropTypes.func.isRequired,
       onClickRecipeDeleteBtn: PropTypes.func.isRequired,
     }
 
     componentDidMount() {
-      this.props.fetchRecipesIfNeeded();
+      this.props.fetchRecipes();
     }
 
     onSearchInputChange = (searchText) => {

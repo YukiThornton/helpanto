@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { selectRecipeOnList, filterRecipeList, fetchRecipesIfNeeded, deleteRecipe } from '../actions/recipe-actions';
+import {
+  selectRecipeOnList,
+  deselectRecipeOnList,
+  filterRecipeList,
+  fetchRecipes,
+  deleteRecipe,
+} from '../actions/recipe-actions';
 import RecipeList from '../components/RecipeList';
 
 import { openModalNewRecipe } from '../actions/modal-actions';
@@ -25,29 +31,37 @@ const mapStateToProps = state => {
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const deleteAndFetch = (dispatch, id) => {
+  dispatch(deleteRecipe(id)).then(() => {
+    dispatch(deselectRecipeOnList());
+  }).then(() => {
+    dispatch(fetchRecipes());
+  });
+};
+
+const mapDispatchToProps = (dispatch) => {
   return {
-    onRecipeRowClick: id => {
+    onRecipeRowClick: (id) => {
       dispatch(selectRecipeOnList(id));
     },
-    onSearchInputChange: filterText => {
+    onSearchInputChange: (filterText) => {
       dispatch(filterRecipeList(filterText));
     },
-    fetchRecipesIfNeeded: () => {
-      dispatch(fetchRecipesIfNeeded());
+    fetchRecipes: () => {
+      dispatch(fetchRecipes());
     },
     openModalNewRecipe: () => {
       dispatch(openModalNewRecipe());
     },
-    onClickRecipeDeleteBtn: id => {
-      dispatch(deleteRecipe(id));
+    onClickRecipeDeleteBtn: (id) => {
+      deleteAndFetch(dispatch, id);
     },
   };
-}
+};
 
 const RecipeListContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(RecipeList);
 
 export default RecipeListContainer;

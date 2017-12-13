@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createRecipe } from '../actions/recipe-actions';
+import { createRecipe, fetchRecipes } from '../actions/recipe-actions';
 import { closeModal } from '../actions/modal-actions';
-import { MODAL_TYPE_NEW_RECIPE } from '../constans/modal-types';
+import { MODAL_TYPE_NEW_RECIPE } from '../constants/modal-types';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
@@ -96,7 +96,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(closeModal());
     },
     onRequestCreateRecipe: (title, content) => {
-      dispatch(createRecipe(title, content));
+      dispatch(createRecipe(title, content)).then(() => {
+        dispatch(fetchRecipes());
+      });
       dispatch(closeModal());
     }
   };
