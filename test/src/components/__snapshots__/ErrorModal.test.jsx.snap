@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ErrorModal should render a modal when isOpen === true 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  closeTimeoutMS={0}
+  isOpen={true}
+  onRequestClose={[Function]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <h1>
+    Error
+  </h1>
+  <p>
+    Error message
+  </p>
+  <FlatButton
+    disabled={false}
+    fullWidth={true}
+    label="Close"
+    labelPosition="after"
+    labelStyle={Object {}}
+    onClick={[Function]}
+    onKeyboardFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    primary={false}
+    secondary={false}
+  />
+</Modal>
+`;
+
+exports[`test ErrorModal should render no modal when isOpen === false 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  closeTimeoutMS={0}
+  isOpen={false}
+  onRequestClose={[Function]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <h1>
+    Error
+  </h1>
+  <p />
+  <FlatButton
+    disabled={false}
+    fullWidth={true}
+    label="Close"
+    labelPosition="after"
+    labelStyle={Object {}}
+    onClick={[Function]}
+    onKeyboardFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    primary={false}
+    secondary={false}
+  />
+</Modal>
+`;

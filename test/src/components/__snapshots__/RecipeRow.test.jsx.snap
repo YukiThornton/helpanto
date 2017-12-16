@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test RecipeRow should render correctly when selected === false 1`] = `
+<ListItem
+  autoGenerateNestedIndicator={true}
+  containerElement="span"
+  disableKeyboardFocus={false}
+  disabled={false}
+  initiallyOpen={false}
+  insetChildren={false}
+  nestedItems={Array []}
+  nestedLevel={0}
+  onClick={[Function]}
+  onKeyboardFocus={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onNestedListToggle={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  open={null}
+  primaryText="Recipe title"
+  primaryTogglesNestedList={false}
+  rightIconButton={
+    <IconButton
+      disableTouchRipple={false}
+      disabled={false}
+      iconStyle={Object {}}
+      tooltipPosition="bottom-center"
+      touch={false}
+    >
+      <ActionDelete
+        color="#90A4AE"
+        onClick={[Function]}
+      />
+    </IconButton>
+  }
+  secondaryTextLines={1}
+  style={
+    Object {
+      "color": "#78909C",
+      "fontSize": 30,
+    }
+  }
+/>
+`;
+
+exports[`test RecipeRow should render correctly when selected === true 1`] = `
+<ListItem
+  autoGenerateNestedIndicator={true}
+  containerElement="span"
+  disableKeyboardFocus={false}
+  disabled={false}
+  initiallyOpen={false}
+  insetChildren={false}
+  nestedItems={Array []}
+  nestedLevel={0}
+  onClick={[Function]}
+  onKeyboardFocus={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onNestedListToggle={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  open={null}
+  primaryText="Recipe title"
+  primaryTogglesNestedList={false}
+  rightIconButton={
+    <IconButton
+      disableTouchRipple={false}
+      disabled={false}
+      iconStyle={Object {}}
+      tooltipPosition="bottom-center"
+      touch={false}
+    >
+      <ActionDelete
+        color="#90A4AE"
+        onClick={[Function]}
+      />
+    </IconButton>
+  }
+  secondaryTextLines={1}
+  style={
+    Object {
+      "backgroundColor": "#CFD8DC",
+      "color": "#455A64",
+      "fontSize": 30,
+    }
+  }
+/>
+`;

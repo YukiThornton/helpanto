@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test RecipeList should render a list with 0 items correctly 1`] = `
+<div
+  className="Recipe-list"
+>
+  <TextField
+    disabled={false}
+    floatingLabelFixed={false}
+    fullWidth={false}
+    hintText="Search"
+    multiLine={false}
+    onChange={[Function]}
+    rows={1}
+    style={
+      Object {
+        "paddingLeft": 10,
+      }
+    }
+    type="text"
+    underlineShow={true}
+  />
+  <List />
+  <FloatingActionButton
+    disabled={false}
+    mini={false}
+    onClick={[Function]}
+    secondary={false}
+    style={
+      Object {
+        "position": "fixed",
+        "right": 30,
+        "top": 50,
+      }
+    }
+    zDepth={2}
+  >
+    <ContentAdd />
+  </FloatingActionButton>
+</div>
+`;
+
+exports[`test RecipeList should render a list with 2 items (0 selected) correctly 1`] = `
+<div
+  className="Recipe-list"
+>
+  <TextField
+    disabled={false}
+    floatingLabelFixed={false}
+    fullWidth={false}
+    hintText="Search"
+    multiLine={false}
+    onChange={[Function]}
+    rows={1}
+    style={
+      Object {
+        "paddingLeft": 10,
+      }
+    }
+    type="text"
+    underlineShow={true}
+  />
+  <List>
+    <RecipeRow
+      id="id0"
+      key="id0"
+      onClick={[Function]}
+      onClickDeleteBtn={[Function]}
+      selected={false}
+      title="title1"
+    />
+    <RecipeRow
+      id="id1"
+      key="id1"
+      onClick={[Function]}
+      onClickDeleteBtn={[Function]}
+      selected={false}
+      title="title2"
+    />
+  </List>
+  <FloatingActionButton
+    disabled={false}
+    mini={false}
+    onClick={[Function]}
+    secondary={false}
+    style={
+      Object {
+        "position": "fixed",
+        "right": 30,
+        "top": 50,
+      }
+    }
+    zDepth={2}
+  >
+    <ContentAdd />
+  </FloatingActionButton>
+</div>
+`;
+
+exports[`test RecipeList should render a list with 2 items (1 selected) correctly 1`] = `
+<div
+  className="Recipe-list"
+>
+  <TextField
+    disabled={false}
+    floatingLabelFixed={false}
+    fullWidth={false}
+    hintText="Search"
+    multiLine={false}
+    onChange={[Function]}
+    rows={1}
+    style={
+      Object {
+        "paddingLeft": 10,
+      }
+    }
+    type="text"
+    underlineShow={true}
+  />
+  <List>
+    <RecipeRow
+      id="id0"
+      key="id0"
+      onClick={[Function]}
+      onClickDeleteBtn={[Function]}
+      selected={false}
+      title="title1"
+    />
+    <RecipeRow
+      id="id1"
+      key="id1"
+      onClick={[Function]}
+      onClickDeleteBtn={[Function]}
+      selected={true}
+      title="title2"
+    />
+  </List>
+  <FloatingActionButton
+    disabled={false}
+    mini={false}
+    onClick={[Function]}
+    secondary={false}
+    style={
+      Object {
+        "position": "fixed",
+        "right": 30,
+        "top": 50,
+      }
+    }
+    zDepth={2}
+  >
+    <ContentAdd />
+  </FloatingActionButton>
+</div>
+`;
+
+exports[`test RecipeList should render a spinner correctly when fetching === true 1`] = `
+<div
+  className="Spinner"
+>
+  <Spinner
+    color="gray"
+    fadeIn="full"
+    name="chasing-dots"
+    noFadeIn={false}
+    overrideSpinnerClassName=""
+  />
+</div>
+`;

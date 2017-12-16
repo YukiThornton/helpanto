@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test RecipeDetail should render nothing when visible === false 1`] = `
+<div
+  className="Recipe-Details"
+/>
+`;
+
+exports[`test RecipeDetail should render recipe detals when visible === true 1`] = `
+<div
+  className="Recipe-Details"
+>
+  <h2>
+    title1
+  </h2>
+  <p
+    style={
+      Object {
+        "color": "gray",
+      }
+    }
+  >
+    content1
+  </p>
+</div>
+`;

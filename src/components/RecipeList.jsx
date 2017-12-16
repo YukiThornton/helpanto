@@ -2,18 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'material-ui/List';
 import TextField from 'material-ui/TextField';
-import RecipeRow from './RecipeRow';
 import Spinner from 'react-spinkit';
-import '../styles/App.css';
-
 // TODO: Move the button away
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
+import RecipeRow from './RecipeRow';
+import '../styles/App.css';
+
 class RecipeList extends Component {
     static propTypes = {
       isFetching: PropTypes.bool.isRequired,
-      recipes: PropTypes.object.isRequired,
+      recipes: PropTypes.oneOfType([
+        PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          content: PropTypes.string.isRequired,
+          createdAt: PropTypes.string.isRequired,
+          lastModifiedAt: PropTypes.string.isRequired,
+        }),
+        PropTypes.shape({}),
+      ]).isRequired,
       selectedRecipeId: PropTypes.string.isRequired,
       onRecipeRowClick: PropTypes.func.isRequired,
       fetchRecipes: PropTypes.func.isRequired,
@@ -36,12 +44,12 @@ class RecipeList extends Component {
           <div className="Spinner">
             <Spinner name="chasing-dots" color="gray" />
           </div>
-        )
+        );
       }
       return (
-        <div className='Recipe-list'>
+        <div className="Recipe-list">
           <TextField
-            hintText='Search'
+            hintText="Search"
             style={{
               paddingLeft: 10,
             }}
@@ -55,13 +63,17 @@ class RecipeList extends Component {
                 title={this.props.recipes[key].title}
                 selected={this.props.selectedRecipeId === key}
                 onClick={() => this.props.onRecipeRowClick(key)}
-                onClickDeleteBtn={(id) => this.props.onClickRecipeDeleteBtn(id)}
+                onClickDeleteBtn={id => this.props.onClickRecipeDeleteBtn(id)}
               />
             ))}
           </List>
           <FloatingActionButton
             onClick={this.props.openModalNewRecipe}
-            style={{position: 'fixed', top: 50, right: 30}}
+            style={{
+              position: 'fixed',
+              top: 50,
+              right: 30,
+            }}
           >
             <ContentAdd />
           </FloatingActionButton>

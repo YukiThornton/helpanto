@@ -1,5 +1,6 @@
 {
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "rules": {
     "linebreak-style": [
       "error",
@@ -11,6 +12,12 @@
       {
         "requireReturnForObjectLiteral": true
       }
-    ]
+    ],
+    "react/require-default-props": false
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
   }
 }

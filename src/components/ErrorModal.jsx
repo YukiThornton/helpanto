@@ -1,9 +1,14 @@
 import React from 'react';
 import Modal from 'react-modal';
-import FlatButton from 'material-ui/FlatButton';
 import PropTypes from 'prop-types';
+import isRequiredIf from 'react-proptype-conditional-require';
+import FlatButton from 'material-ui/FlatButton';
 
-const ErrorModal = ({isOpen, message, onRequestClose}) => (
+const ErrorModal = ({
+  isOpen,
+  message,
+  onRequestClose,
+}) => (
   <Modal
     isOpen={isOpen}
     onRequestClose={onRequestClose}
@@ -13,14 +18,14 @@ const ErrorModal = ({isOpen, message, onRequestClose}) => (
     <FlatButton
       onClick={onRequestClose}
       label="Close"
-      fullWidth={true}
+      fullWidth
     />
   </Modal>
 );
 
 ErrorModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  message: PropTypes.string,
+  message: isRequiredIf(PropTypes.string, props => props.isOpen),
   onRequestClose: PropTypes.func.isRequired,
 };
 

@@ -4,7 +4,7 @@ import RecipeDetail from '../components/RecipeDetail';
 const mapStateToProps = state => {
   if (state.status.recipeList.selected) {
     return {
-      ...state.entity.recipes.byId[state.status.recipeList.selectedRecipeId],
+      recipe: state.entity.recipes.byId[state.status.recipeList.selectedRecipeId],
       visible: true,
     };
   } else {

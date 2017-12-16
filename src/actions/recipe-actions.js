@@ -19,8 +19,8 @@ const convertRecipe = (apiRecipe) => {
 
 const convertRecipes = (apiRecipes) => {
   const recipes = {};
-  apiRecipes.map((recipe) => {
-    recipes[recipe.id] = convertRecipe(recipe)
+  apiRecipes.forEach((recipe) => {
+    recipes[recipe.id] = convertRecipe(recipe);
   });
   return recipes;
 };
@@ -73,9 +73,7 @@ export const fetchRecipes = () => (dispatch) => {
       }
       return res.json();
     })
-    .then((json) => {
-      return dispatch(succeedGetRecipes(convertRecipes(json.recipes)));
-    })
+    .then(json => dispatch(succeedGetRecipes(convertRecipes(json.recipes))))
     .catch((error) => {
       dispatch(failGetRecipes());
       return dispatch(enqueueError(error.message));
@@ -121,9 +119,7 @@ export const createRecipe = (title, content) => (dispatch) => {
       }
       return res.json();
     })
-    .then((json) => {
-      return dispatch(succeedPostRecipe(json.id, convertRecipe(json)));
-    })
+    .then(json => dispatch(succeedPostRecipe(json.id, convertRecipe(json))))
     .catch((error) => {
       dispatch(failPostRecipe());
       return dispatch(enqueueError(error.message));
@@ -159,9 +155,7 @@ export const deleteRecipe = id => (dispatch) => {
         throw new Error(MSG_ERR_DELETE_RECIPE);
       }
     })
-    .then(() => {
-      return dispatch(succeedDeleteRecipe(id));
-    })
+    .then(() => dispatch(succeedDeleteRecipe(id)))
     .catch((error) => {
       dispatch(failDeleteRecipe());
       return dispatch(enqueueError(error.message));
