@@ -13,7 +13,8 @@
         "requireReturnForObjectLiteral": true
       }
     ],
-    "react/require-default-props": false
+    "react/require-default-props": false,
+    "import/no-named-as-default": false
   },
   "env": {
     "browser": true,

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createRecipe, fetchRecipes } from '../actions/recipe-actions';
-import { closeModal } from '../actions/modal-actions';
-import { MODAL_TYPE_NEW_RECIPE } from '../constants/modal-types';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import { createRecipe, fetchRecipes } from '../actions/recipe-actions';
+import { closeModal } from '../actions/modal-actions';
+import { MODAL_TYPE_NEW_RECIPE } from '../constants/modal-types';
 
-class NewRecipeModal extends Component {
+export class NewRecipeModal extends Component {
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onRequestClose: PropTypes.func.isRequired,
+    onRequestCreateRecipe: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -53,44 +54,43 @@ class NewRecipeModal extends Component {
         <TextField
           hintText="Recipe title"
           value={this.state.title}
-          onChange={(e, val) => this.handleTextInput({title: val})}
+          onChange={(e, val) => this.handleTextInput({ title: val })}
         />
         <br />
         <br />
         <TextField
-          multiLine={true}
+          multiLine
           rows={4}
           rowsMax={6}
           hintText="Recipe content"
           value={this.state.content}
-          onChange={(e, val) => this.handleTextInput({content: val})}
+          onChange={(e, val) => this.handleTextInput({ content: val })}
         />
         <FlatButton
           onClick={this.handleSubmit}
           label="Create"
-          fullWidth={true}
+          fullWidth
         />
         <FlatButton
           onClick={this.handleRequestClose}
           label="Cancel"
-          fullWidth={true}
+          fullWidth
         />
       </Modal>
     );
   }
 }
 
-const isOpen = state => {
-  return state.status.modal.isOpen && state.status.modal.modalType === MODAL_TYPE_NEW_RECIPE;
-}
+const isOpen = state =>
+  state.status.modal.isOpen && state.status.modal.modalType === MODAL_TYPE_NEW_RECIPE;
 
-const mapStateToProps = state => {
+export const mapStateToProps = (state) => {
   return {
     isOpen: isOpen(state),
   };
-}
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onRequestClose: () => {
       dispatch(closeModal());
@@ -100,11 +100,11 @@ const mapDispatchToProps = dispatch => {
         dispatch(fetchRecipes());
       });
       dispatch(closeModal());
-    }
+    },
   };
-}
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(NewRecipeModal);

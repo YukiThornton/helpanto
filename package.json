@@ -19,9 +19,10 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.config.js",
-    "lint": "eslint src/**/*.js* test/**/*.js",
+    "lint": "eslint src/*.js* src/**/*.js* test/*.js test/**/*.js",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

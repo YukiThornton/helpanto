@@ -15,21 +15,21 @@ const getVisibleRecipes = (recipes, filterText) => {
     return recipes;
   }
   const result = {};
-  Object.entries(recipes).forEach(([k, v]) => {
-    if (v.title.startsWith(filterText)) {
-      result[k] = v;
+  Object.keys(recipes).forEach((k) => {
+    if (recipes[k].title.startsWith(filterText)) {
+      result[k] = recipes[k];
     }
   });
   return result;
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = (state) => {
   return {
     isFetching: state.entity.recipes.isFetching,
     recipes: getVisibleRecipes(state.entity.recipes.byId, state.status.recipeList.filterText),
     selectedRecipeId: state.status.recipeList.selectedRecipeId,
   };
-}
+};
 
 const deleteAndFetch = (dispatch, id) => {
   dispatch(deleteRecipe(id)).then(() => {
