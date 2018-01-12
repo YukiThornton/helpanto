@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/action-types';
+import * as recipeTypes from '../constants/recipe-types';
 import {
   MSG_ERR_FETCH_RECIPES,
   MSG_ERR_CREATE_RECIPE,
@@ -10,8 +11,11 @@ const API_ROOT = 'http://localhost:3000';
 
 const convertRecipe = (apiRecipe) => {
   return {
+    recipeType: recipeTypes.RECIPE_TYPE_MEMO,
     title: apiRecipe.title,
-    content: apiRecipe.content,
+    body: {
+      memo: apiRecipe.content,
+    },
     createdAt: apiRecipe.created_at,
     lastModifiedAt: apiRecipe.last_modified_at,
   };

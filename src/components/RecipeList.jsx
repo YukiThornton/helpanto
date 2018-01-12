@@ -15,8 +15,11 @@ class RecipeList extends Component {
       isFetching: PropTypes.bool.isRequired,
       recipes: PropTypes.oneOfType([
         PropTypes.shape({
+          recipeType: PropTypes.string.isRequired,
           title: PropTypes.string.isRequired,
-          content: PropTypes.string.isRequired,
+          body: PropTypes.shape({
+            memo: PropTypes.string.isRequired,
+          }),
           createdAt: PropTypes.string.isRequired,
           lastModifiedAt: PropTypes.string.isRequired,
         }),

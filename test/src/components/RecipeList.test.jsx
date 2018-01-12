@@ -2,18 +2,25 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import RecipeList from '../../../src/components/RecipeList';
 import { INVALID_RECIPE_ID } from '../../../src/constants/values';
+import * as recipeTypes from '../../../src/constants/recipe-types';
 
 describe('test RecipeList', () => {
   const recipes = {
     id0: {
+      recipeType: recipeTypes.RECIPE_TYPE_MEMO,
       title: 'title1',
-      content: 'content1',
+      body: {
+        memo: 'content1',
+      },
       createdAt: '2017-12-01T06:44:04.262Z',
       lastModifiedAt: '2017-12-01T06:44:04.262Z',
     },
     id1: {
+      recipeType: recipeTypes.RECIPE_TYPE_MEMO,
       title: 'title2',
-      content: 'content2',
+      body: {
+        memo: 'content2',
+      },
       createdAt: '2017-12-02T06:44:04.262Z',
       lastModifiedAt: '2017-12-02T06:44:04.262Z',
     },
