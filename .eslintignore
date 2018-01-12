@@ -1,0 +1,5 @@
+config/
+public/
+src/styles/
+coverage/
+test/**/__snapshots__/
