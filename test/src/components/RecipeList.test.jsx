@@ -2,23 +2,23 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import RecipeList from '../../../src/components/RecipeList';
 import { INVALID_RECIPE_ID } from '../../../src/constants/values';
-import * as recipeTypes from '../../../src/constants/recipe-types';
+import * as recipeKinds from '../../../src/constants/recipe-kinds';
 
 describe('test RecipeList', () => {
   const recipes = {
     id0: {
-      recipeType: recipeTypes.RECIPE_TYPE_MEMO,
+      kind: recipeKinds.MEMO,
       title: 'title1',
-      body: {
+      content: {
         memo: 'content1',
       },
       createdAt: '2017-12-01T06:44:04.262Z',
       lastModifiedAt: '2017-12-01T06:44:04.262Z',
     },
     id1: {
-      recipeType: recipeTypes.RECIPE_TYPE_MEMO,
+      kind: recipeKinds.MEMO,
       title: 'title2',
-      body: {
+      content: {
         memo: 'content2',
       },
       createdAt: '2017-12-02T06:44:04.262Z',
@@ -36,6 +36,7 @@ describe('test RecipeList', () => {
         fetchRecipes={() => {}}
         openModalNewRecipe={() => {}}
         onSearchInputChange={() => {}}
+        deselectRecipe={() => {}}
         onClickRecipeDeleteBtn={() => {}}
       />
     );
@@ -52,6 +53,7 @@ describe('test RecipeList', () => {
         fetchRecipes={() => {}}
         openModalNewRecipe={() => {}}
         onSearchInputChange={() => {}}
+        deselectRecipe={() => {}}
         onClickRecipeDeleteBtn={() => {}}
       />
     );
@@ -68,6 +70,7 @@ describe('test RecipeList', () => {
         fetchRecipes={() => {}}
         openModalNewRecipe={() => {}}
         onSearchInputChange={() => {}}
+        deselectRecipe={() => {}}
         onClickRecipeDeleteBtn={() => {}}
       />
     );
@@ -84,6 +87,7 @@ describe('test RecipeList', () => {
         fetchRecipes={() => {}}
         openModalNewRecipe={() => {}}
         onSearchInputChange={() => {}}
+        deselectRecipe={() => {}}
         onClickRecipeDeleteBtn={() => {}}
       />
     );

@@ -19,14 +19,18 @@ export class NewRecipeModal extends Component {
     super(props);
     this.state = {
       title: '',
-      content: '',
+      content: {
+        memo: '',
+      },
     };
   }
 
   clearInput = () => {
     this.setState({
       title: '',
-      content: '',
+      content: {
+        memo: '',
+      },
     });
   };
 
@@ -63,8 +67,8 @@ export class NewRecipeModal extends Component {
           rows={4}
           rowsMax={6}
           hintText="Recipe content"
-          value={this.state.content}
-          onChange={(e, val) => this.handleTextInput({ content: val })}
+          value={this.state.content.memo}
+          onChange={(e, val) => this.handleTextInput({ content: { memo: val } })}
         />
         <FlatButton
           onClick={this.handleSubmit}

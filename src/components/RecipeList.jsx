@@ -15,9 +15,9 @@ class RecipeList extends Component {
       isFetching: PropTypes.bool.isRequired,
       recipes: PropTypes.oneOfType([
         PropTypes.shape({
-          recipeType: PropTypes.string.isRequired,
+          kind: PropTypes.string.isRequired,
           title: PropTypes.string.isRequired,
-          body: PropTypes.shape({
+          content: PropTypes.shape({
             memo: PropTypes.string.isRequired,
           }),
           createdAt: PropTypes.string.isRequired,
@@ -30,6 +30,7 @@ class RecipeList extends Component {
       fetchRecipes: PropTypes.func.isRequired,
       openModalNewRecipe: PropTypes.func.isRequired,
       onSearchInputChange: PropTypes.func.isRequired,
+      deselectRecipe: PropTypes.func.isRequired,
       onClickRecipeDeleteBtn: PropTypes.func.isRequired,
     }
 
@@ -39,6 +40,13 @@ class RecipeList extends Component {
 
     onSearchInputChange = (searchText) => {
       this.props.onSearchInputChange(searchText);
+    };
+
+    onClickRecipeDeleteBtn = (id) => {
+      if (id === this.props.selectedRecipeId) {
+        this.props.deselectRecipe();
+      }
+      this.props.onClickRecipeDeleteBtn(id);
     };
 
     render() {
@@ -66,7 +74,7 @@ class RecipeList extends Component {
                 title={this.props.recipes[key].title}
                 selected={this.props.selectedRecipeId === key}
                 onClick={() => this.props.onRecipeRowClick(key)}
-                onClickDeleteBtn={id => this.props.onClickRecipeDeleteBtn(id)}
+                onClickDeleteBtn={id => this.onClickRecipeDeleteBtn(id)}
               />
             ))}
           </List>

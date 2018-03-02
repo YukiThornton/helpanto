@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isRequiredIf from 'react-proptype-conditional-require';
 
-import * as recipeTypes from '../constants/recipe-types';
+import * as recipeKinds from '../constants/recipe-kinds';
 
 const RecipeDetail = ({
   visible,
   recipe,
 }) => {
   if (visible) {
-    switch (recipe.recipeType) {
-      case recipeTypes.RECIPE_TYPE_MEMO:
+    switch (recipe.kind) {
+      case recipeKinds.MEMO:
         return (
           <div className="Recipe-Details">
             <h2>{recipe.title}</h2>
@@ -19,7 +19,7 @@ const RecipeDetail = ({
                 color: 'gray',
               }}
             >
-              {recipe.body.memo}
+              {recipe.content.memo}
             </p>
           </div>
         );
@@ -34,9 +34,9 @@ RecipeDetail.propTypes = {
   visible: PropTypes.bool.isRequired,
   recipe: isRequiredIf(
     PropTypes.shape({
-      recipeType: PropTypes.string.isRequired,
+      kind: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      body: PropTypes.shape({
+      content: PropTypes.shape({
         memo: PropTypes.string.isRequired,
       }),
       createdAt: PropTypes.string.isRequired,

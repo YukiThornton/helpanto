@@ -1,5 +1,6 @@
 import reducer from '../../../src/reducers/entity-recipes-reducer';
 import * as actionTypes from '../../../src/constants/action-types';
+import * as recipeKinds from '../../../src/constants/recipe-kinds';
 
 describe('entity-recipes reducer', () => {
   const initialState = {
@@ -8,26 +9,38 @@ describe('entity-recipes reducer', () => {
   };
   const recipes = [
     {
+      kind: recipeKinds.MEMO,
       title: 'title1',
-      content: 'content1',
+      content: {
+        memo: 'content1',
+      },
       createdAt: '2017-12-01T06:44:04.262Z',
       lastModifiedAt: '2017-12-01T06:44:04.262Z',
     },
     {
+      kind: recipeKinds.MEMO,
       title: 'title2',
-      content: 'content2',
+      content: {
+        memo: 'content2',
+      },
       createdAt: '2017-12-02T06:44:04.262Z',
       lastModifiedAt: '2017-12-02T06:44:04.262Z',
     },
     {
+      kind: recipeKinds.MEMO,
       title: 'title1',
-      content: 'content1',
+      content: {
+        memo: 'content1',
+      },
       createdAt: '2017-12-01T06:44:04.262Z',
       lastModifiedAt: '2017-12-01T06:44:04.262Z',
     },
     {
+      kind: recipeKinds.MEMO,
       title: 'title2',
-      content: 'content2',
+      content: {
+        memo: 'content2',
+      },
       createdAt: '2017-12-02T06:44:04.262Z',
       lastModifiedAt: '2017-12-02T06:44:04.262Z',
     },

@@ -1,5 +1,4 @@
 import * as actionTypes from '../constants/action-types';
-import * as recipeTypes from '../constants/recipe-types';
 import {
   MSG_ERR_FETCH_RECIPES,
   MSG_ERR_CREATE_RECIPE,
@@ -11,10 +10,10 @@ const API_ROOT = 'http://localhost:3000';
 
 const convertRecipe = (apiRecipe) => {
   return {
-    recipeType: recipeTypes.RECIPE_TYPE_MEMO,
+    kind: apiRecipe.kind,
     title: apiRecipe.title,
-    body: {
-      memo: apiRecipe.content,
+    content: {
+      memo: apiRecipe.content.memo,
     },
     createdAt: apiRecipe.created_at,
     lastModifiedAt: apiRecipe.last_modified_at,
@@ -107,7 +106,7 @@ const failPostRecipe = () => {
 // TODO should check title and content
 export const createRecipe = (title, content) => (dispatch) => {
   dispatch(requestPostRecipe());
-  return fetch(`${API_ROOT}/recipe`, {
+  return fetch(`${API_ROOT}/memo`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',

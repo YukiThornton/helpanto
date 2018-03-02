@@ -33,8 +33,6 @@ export const mapStateToProps = (state) => {
 
 const deleteAndFetch = (dispatch, id) => {
   dispatch(deleteRecipe(id)).then(() => {
-    dispatch(deselectRecipeOnList());
-  }).then(() => {
     dispatch(fetchRecipes());
   });
 };
@@ -52,6 +50,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openModalNewRecipe: () => {
       dispatch(openModalNewRecipe());
+    },
+    deselectRecipe: () => {
+      dispatch(deselectRecipeOnList());
     },
     onClickRecipeDeleteBtn: (id) => {
       deleteAndFetch(dispatch, id);
