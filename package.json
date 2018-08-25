@@ -61,6 +61,9 @@
     ],
     "moduleNameMapper": {
       "\\.css$": "identity-obj-proxy"
+    },
+    "globals": {
+      "RECIPE_SERVER_URL": ""
     }
   }
 }

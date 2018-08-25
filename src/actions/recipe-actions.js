@@ -6,7 +6,7 @@ import {
 } from '../constants/messages';
 import { enqueueError } from './error-actions';
 
-const API_ROOT = 'http://localhost:3000';
+const API_ROOT = RECIPE_SERVER_URL; // eslint-disable-line no-undef
 
 const convertRecipe = (apiRecipe) => {
   return {

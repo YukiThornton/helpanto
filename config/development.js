@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const srcDir = path.resolve(__dirname, '../src');
@@ -34,11 +35,15 @@ export default {
     new HtmlWebpackPlugin({
       template: publicDir + '/index.html',
       filename: 'index.html'
-    })
+    }),
+    new webpack.DefinePlugin({
+      RECIPE_SERVER_URL: JSON.stringify(process.env.RECIPE_SERVER_URL),
+    }),
   ],
 
   devServer: {
     contentBase: publicDir,
-    port: 3003,
+    host: '0.0.0.0',
+    port: process.env.PORT,
   },
 }
