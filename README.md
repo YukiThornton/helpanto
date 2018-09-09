@@ -1,7 +1,6 @@
 # Helpanto
 
-Recipe keeper and cook assistant app with React and Redux.
-(`Helpanto` means `assistant` in Esperanto).
+Recipe keeper and cook assistant app with React, Redux and Jest. `Helpanto` means `assistant` in Esperanto.
 
 ## Prerequisite
 
@@ -22,6 +21,7 @@ Recipe keeper and cook assistant app with React and Redux.
     ```sh
     docker-compose up
     ```
+1. Visit http://[Docker host ip address]:3003
 
 ## Functions
 
